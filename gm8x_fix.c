@@ -65,6 +65,15 @@ Patch patches[] = {
 	{.bytes = inputlagpatch_81_141, .name = "GM8.1.141 input lag patch", .type = INPUTLAG},
 	{.bytes = resetpatch_81_141, .name = "GM8.1.141 display reset patch", .type = RESET},
 	{.bytes = dplaypatch_81_141, .name = "GM8.1.141 DirectPlay patch", .type = DPLAY},
+
+	{.bytes = releasedelaypatch_70, .name = "GM7.0 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_80, .name = "GM8.0 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_65, .name = "GM8.1.65 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_71, .name = "GM8.1.71 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_91, .name = "GM8.1.91 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_135, .name = "GM8.1.135 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_140, .name = "GM8.1.140 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
+	{.bytes = releasedelaypatch_81_141, .name = "GM8.1.141 keyboard_check_direct lag fix patch", .type = RELEASEDELAY},
 	
 	// the wall of shame
 	{.bytes = resetpatch_fix_81_141, .name = "gm8x_fix 0.5.5-0.5.6 bugfix", .type = BUGFIX},
@@ -309,6 +318,8 @@ int main(int argc, const char *argv[]) {
 				disable_patches[INPUTLAG] = true;
 			} else if (strcmp(argv[i], "-nr") == 0) {
 				disable_patches[RESET] = true;
+			} else if (strcmp(argv[i], "-nl") == 0) {
+				disable_patches[RELEASEDELAY] = true;
 			} else if (fn == NULL) {
 				// yeah i don't feel like figuring out something better
 				fn = argv[i];
@@ -350,6 +361,7 @@ int main(int argc, const char *argv[]) {
 		puts(" -nj  Don't offer joystick patch.");
 		puts(" -ns  Don't offer scheduler patch.");
 		puts(" -nr  Don't offer display reset patch.");
+		puts(" -nl  Don't offer keyboard_check_direct lag fix patch.");
 		puts(" -nm  Don't offer memory patch.");
 		puts(" -nd  Don't offer DirectPlay patch.\n");
 		CLOSE_PATCHER;
